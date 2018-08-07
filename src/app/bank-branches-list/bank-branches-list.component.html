@@ -1,0 +1,47 @@
+<div class="container">
+  <h2 style="text-align: center">Bank Branches</h2>
+  <form #userForm="ngForm">
+    <div class="row">
+      <div class="col-md-4">
+          <select class="form-control" name="city" style="padding-bottom: 1%" (change)="dropdownChange(userForm.value)" ngModel>
+            <option value="" selected disabled>Choose your city</option>
+            <option value="BANGALORE">BANGALORE</option>
+            <option value="DELHI">DELHI</option>
+            <option value="MUMBAI">MUMBAI</option>
+            <option value="CHENNAI">CHENNAI</option>
+            <option value="HYDERABAD">HYDERABAD</option>     
+          </select>
+      </div>
+      <div class="col-md-8">
+          <input type="text" [(ngModel)]="searchText" placeholder="Search By branch" name="searchText" class="form-control"/>
+      </div>
+    </div>
+  </form>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Bank Name</th>
+          <th>Branch</th>
+          <th>IFSC Code</th>
+          <th>Bank ID</th>
+          <th>District</th>
+          <th>State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let data of Data | filter: searchText">
+          <td>{{data.bank_name}}</td>
+          <td>{{data.branch}}</td>
+          <td>{{data.ifsc}}</td>
+          <td>{{data.bank_id}}</td>
+          <td>{{data.district}}</td>
+          <td>{{data.state}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
