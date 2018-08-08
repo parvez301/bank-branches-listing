@@ -4,11 +4,9 @@ import { Pipe, PipeTransform,Injectable } from '@angular/core';
 })
 @Injectable()
 export class FilterPipe implements PipeTransform {
-   transform(bank_name: any, searchText: any): any {
-    if(searchText == null) return bank_name;
+  public transform(value, keys: string, searchText: string) {
 
-    return bank_name.filter(function(filter){
-      return filter.bank_name.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
-    })
+    if (!searchText) return value;
+    return (value || []).filter((d) => keys.split(',').some(key => d.hasOwnProperty(key) && new RegExp(searchText, 'gi').test(d[key])));
   }
 }

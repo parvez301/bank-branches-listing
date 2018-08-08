@@ -33,13 +33,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr  *ngFor="let data of Data | filter: searchText">
-          <td>{{data.bank_name}}</td>
-          <td>{{data.branch}}</td>
-          <td>{{data.ifsc}}</td>
-          <td>{{data.bank_id}}</td>
-          <td>{{data.district}}</td>
-          <td>{{data.state}}</td>
+        <tr  *ngFor="let d of Data | filter:'bank_name,branch,ifsc,bank_id,district,state':searchText">
+          <td>{{d.bank_name}}</td>
+          <td>{{d.branch}}</td>
+          <td>{{d.ifsc}}</td>
+          <td>{{d.bank_id}}</td>
+          <td>{{d.district}}</td>
+          <td>{{d.state}}</td>
         </tr>
       </tbody>
     </table>
